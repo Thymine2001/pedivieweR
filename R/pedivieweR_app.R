@@ -23,17 +23,31 @@ pedivieweR_app <- function() {
   
   # Load libraries (required for Shiny apps)
   # Note: We need to actually load these packages for Shiny apps to work
-  # They are already declared in DESCRIPTION as Imports
-  if (requireNamespace("shiny", quietly = TRUE)) {
-    attachNamespace("shiny")
-    attachNamespace("bslib")
-    attachNamespace("shinyjs")
-    attachNamespace("dplyr")
-    attachNamespace("DT")
-    attachNamespace("pedigreeTools")
-    attachNamespace("visNetwork")
-    attachNamespace("igraph")
-    attachNamespace("digest")
+  # They are already declared in DESCRIPTION as Depends, so they should be auto-attached
+  # But we use a safe wrapper to avoid errors if they're already attached
+  attach_if_not_loaded <- function(pkg) {
+    # Check if package is already in the search path
+    pkg_name <- paste0("package:", pkg)
+    if (!pkg_name %in% search()) {
+      # Try to attach, suppress error if it fails
+      tryCatch({
+        attachNamespace(pkg)
+      }, error = function(e) {
+        # If attach fails, it might already be loaded, just continue
+        invisible(NULL)
+      })
+    }
+  }
+  
+  # Since these are in Depends, they should be auto-attached when package loads
+  # But we ensure they're available for the sourced app.R
+  packages_to_attach <- c("shiny", "bslib", "shinyjs", "dplyr", "DT", 
+                          "pedigreeTools", "visNetwork", "igraph", "digest")
+  
+  for (pkg in packages_to_attach) {
+    if (requireNamespace(pkg, quietly = TRUE)) {
+      attach_if_not_loaded(pkg)
+    }
   }
   
   # Try to load Rcpp QC function

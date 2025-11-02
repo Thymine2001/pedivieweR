@@ -26,7 +26,7 @@
 #' run_pedivieweR(launch.browser = FALSE)
 #' }
 #'
-#' @import shiny
+#' @importFrom shiny runApp
 #' @export
 run_pedivieweR <- function(host = "127.0.0.1", 
                           port = NULL, 

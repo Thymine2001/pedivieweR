@@ -21,8 +21,8 @@ src/RcppExports.cpp
 src/RcppExports.o
 
 # Documentation
-man/*.Rd
-*.Rd
+# Note: man/*.Rd should be committed for package installation
+# Only exclude generated documentation in subdirectories if needed
 
 # Cache
 pedigree_cache/

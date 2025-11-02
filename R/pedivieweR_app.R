@@ -6,7 +6,10 @@
 #'
 #' @return A Shiny application object
 #'
-#' @import shiny bslib shinyjs dplyr DT pedigreeTools visNetwork igraph digest
+#' @import shiny bslib shinyjs pedigreeTools visNetwork digest
+#' @importFrom DT datatable renderDataTable dataTableOutput
+#' @importFrom dplyr filter mutate select arrange bind_rows transmute row_number
+#' @importFrom igraph graph_from_data_frame components V cluster_louvain
 #' @export
 pedivieweR_app <- function() {
   

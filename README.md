@@ -6,24 +6,49 @@ License: GPL-3
 
 ## Installation
 
-To use this package, you can install it directly from the source:
+### Install from GitHub (Recommended)
+
+Install the package directly from GitHub using `devtools` or `remotes`:
 
 ```r
 # Install required dependencies first
 install.packages(c("shiny", "bslib", "shinyjs", "dplyr", "DT", 
                    "pedigreeTools", "visNetwork", "igraph", "digest", "Rcpp"))
 
-# Install this package (if using devtools)
-devtools::install("path/to/pedivieweR")
+# Install devtools if not already installed
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  install.packages("devtools")
+}
+
+# Install pedivieweR from GitHub
+devtools::install_github("Thymine2001/pedivieweR")
 ```
 
-Or simply load it in development mode:
+Or using `remotes`:
 
 ```r
-# Set working directory to the package root
-setwd("path/to/pedivieweR")
+# Install remotes if not already installed
+if (!requireNamespace("remotes", quietly = TRUE)) {
+  install.packages("remotes")
+}
 
-# Load the package
+# Install pedivieweR from GitHub
+remotes::install_github("Thymine2001/pedivieweR")
+```
+
+### Development Installation
+
+If you want to contribute or modify the code, you can clone the repository and install it locally:
+
+```r
+# Clone the repository first
+# git clone git@github.com:Thymine2001/pedivieweR.git
+
+# Then install from local source
+setwd("path/to/pedivieweR")
+devtools::install()
+
+# Or load it in development mode
 devtools::load_all()
 ```
 

@@ -17,7 +17,8 @@ pedivieweR.Rcheck/
 # Package build artifacts
 src/*.o
 src/*.so
-src/RcppExports.*
+src/RcppExports.cpp
+src/RcppExports.o
 
 # Documentation
 man/*.Rd
@@ -46,3 +47,4 @@ backup/
 .DS_Store
 Thumbs.db
 
+.Rproj.user

@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^backup/
+^pedigree_cache/
+^app\.R$
+^app-.*\.R$
+^pedigree_qc\.cpp$
+^\.git
+^\.gitignore
+^\.DS_Store
+^\.vscode
+

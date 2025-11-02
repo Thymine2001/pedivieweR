@@ -1,0 +1,24 @@
+Package: pedivieweR
+Type: Package
+Title: Pedigree Viewer Shiny Application
+Version: 1.0.0
+Authors@R: person("Author", email = "author@example.com", role = c("aut", "cre"))
+Description: A Shiny application for viewing and analyzing pedigree data with interactive network visualization.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends:
+    R (>= 3.5.0),
+    shiny,
+    bslib,
+    shinyjs,
+    dplyr,
+    DT,
+    pedigreeTools,
+    visNetwork,
+    igraph,
+    digest
+Suggests:
+    Rcpp (>= 1.0.0)
+LinkingTo: Rcpp
+RoxygenNote: 7.3.2

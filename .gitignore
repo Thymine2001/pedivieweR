@@ -1,0 +1,48 @@
+# R
+.Rhistory
+.Rapp.history
+.RData
+.Ruserdata
+*.Rproj.user
+.DS_Store
+
+# Build
+*.tar.gz
+*.zip
+*.o
+*.so
+.Rcheck/
+pedivieweR.Rcheck/
+
+# Package build artifacts
+src/*.o
+src/*.so
+src/RcppExports.*
+
+# Documentation
+man/*.Rd
+*.Rd
+
+# Cache
+pedigree_cache/
+*.cache
+
+# Backup files
+backup/
+*.bak
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+

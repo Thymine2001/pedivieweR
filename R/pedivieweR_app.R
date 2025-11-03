@@ -6,7 +6,9 @@
 #'
 #' @return A Shiny application object
 #'
-#' @import shiny bslib visNetwork pedigreeTools digest
+#' @importFrom shiny shinyApp runApp tags div h1 p hr h4 strong br sliderInput checkboxInput actionButton fileInput selectInput uiOutput verbatimTextOutput renderPrint renderUI reactive reactiveVal observeEvent showNotification req HTML fluidRow column conditionalPanel
+#' @importFrom bslib bs_theme font_google page_fillable
+#' @import visNetwork pedigreeTools digest
 #' @importFrom shinyjs useShinyjs
 #' @importFrom dplyr filter mutate select arrange bind_rows transmute row_number
 #' @importFrom DT datatable renderDataTable dataTableOutput

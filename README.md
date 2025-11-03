@@ -6,6 +6,8 @@
 It allows you to load pedigree datasets, perform quality checks, calculate inbreeding coefficients, and visualize complex pedigree networks in real time.
 
 ---
+## 📊 Function Preview
+![202511022117](https://github.com/user-attachments/assets/d1863ddd-1d43-43dd-9510-0315a40da778)
 
 ## ✨ Features
 - 📂 **Pedigree data preview** – Upload CSV, TXT, or PED files and instantly view the pedigree structure  
@@ -14,7 +16,6 @@ It allows you to load pedigree datasets, perform quality checks, calculate inbre
 - 🌐 **Interactive visualization** – Navigate complex pedigree networks with visNetwork, search individuals, and explore relationships  
 - 🎯 **Smart aggregation** – Automatic hierarchical clustering for large datasets (family, super-family, mega-family levels)  
 - 💡 **Export tools** – Download QC reports, fixed pedigrees, inbreeding data, and selected individual ranges  
-
 ---
 
 ## 🛠️ Installation

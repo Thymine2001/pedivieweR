@@ -27,26 +27,17 @@ pedivieweR_app <- function() {
   if (!requireNamespace("igraph", quietly = TRUE)) stop("igraph package is required")
   if (!requireNamespace("digest", quietly = TRUE)) stop("digest package is required")
   
-  # Load libraries (required for Shiny apps)
-  # Note: We need to actually load these packages for Shiny apps to work
-  # They are already declared in DESCRIPTION as Depends, so they should be auto-attached
-  # But we use a safe wrapper to avoid errors if they're already attached
   attach_if_not_loaded <- function(pkg) {
-    # Check if package is already in the search path
     pkg_name <- paste0("package:", pkg)
     if (!pkg_name %in% search()) {
-      # Try to attach, suppress error if it fails
       tryCatch({
         attachNamespace(pkg)
       }, error = function(e) {
-        # If attach fails, it might already be loaded, just continue
         invisible(NULL)
       })
     }
   }
   
-  # Since these are in Depends, they should be auto-attached when package loads
-  # But we ensure they're available for the sourced app.R
   packages_to_attach <- c("shiny", "bslib", "shinyjs", "dplyr", "DT", 
                           "pedigreeTools", "visNetwork", "igraph", "digest")
   
@@ -56,17 +47,13 @@ pedivieweR_app <- function() {
     }
   }
   
-  # Try to load Rcpp QC function
   use_rcpp <- .load_rcpp_functions()
   
-  # Store use_rcpp in a way accessible to server
   .pedivieweR_env <- new.env()
   .pedivieweR_env$use_rcpp <- use_rcpp
   
-  # Source the app code from inst/app/app.R
   app_file <- system.file("app", "app.R", package = "pedivieweR")
   if (!file.exists(app_file)) {
-    # Fallback for development: try inst/app/app.R or app.R
     if (file.exists("inst/app/app.R")) {
       app_file <- "inst/app/app.R"
     } else if (file.exists("app.R")) {
@@ -76,11 +63,8 @@ pedivieweR_app <- function() {
     }
   }
   
-  # Create a temporary environment to source the app into
   app_env <- new.env(parent = .GlobalEnv)
   
-  # Make packages available in the sourced environment
-  # Use getFromNamespace to avoid global variable warnings
   app_env$shiny <- getNamespace("shiny")
   app_env$bslib <- getNamespace("bslib")
   app_env$shinyjs <- getNamespace("shinyjs")
@@ -91,19 +75,14 @@ pedivieweR_app <- function() {
   app_env$igraph <- getNamespace("igraph")
   app_env$digest <- getNamespace("digest")
   
-  # Make Rcpp available if needed
   if (requireNamespace("Rcpp", quietly = TRUE)) {
     app_env$Rcpp <- getNamespace("Rcpp")
     app_env$sourceCpp <- get("sourceCpp", envir = getNamespace("Rcpp"))
   }
   
-  # Pre-set use_rcpp in the environment (app.R will override if needed)
   app_env$use_rcpp <- use_rcpp
   
-  # Source the app code (which defines ui and server)
   source(app_file, local = app_env)
-  
-  # Extract ui and server from the sourced environment
   if (!exists("ui", envir = app_env) || !exists("server", envir = app_env)) {
     stop("app.R must define 'ui' and 'server' objects")
   }
@@ -111,7 +90,6 @@ pedivieweR_app <- function() {
   ui <- get("ui", envir = app_env)
   server <- get("server", envir = app_env)
   
-  # Create and return the Shiny app
   shiny::shinyApp(ui = ui, server = server)
 }
 

@@ -32,7 +32,6 @@ run_pedivieweR <- function(host = "127.0.0.1",
                           port = NULL, 
                           launch.browser = TRUE,
                           ...) {
-  # Check if required packages are installed
   required_packages <- c("shiny", "bslib", "shinyjs", "dplyr", "DT", 
                          "pedigreeTools", "visNetwork", "igraph", "digest")
   
@@ -45,10 +44,7 @@ run_pedivieweR <- function(host = "127.0.0.1",
          paste(missing_packages, collapse = "', '"), "'))")
   }
   
-  # Load the app
   app <- pedivieweR_app()
-  
-  # Run the app
   shiny::runApp(app, host = host, port = port, launch.browser = launch.browser, ...)
 }
 

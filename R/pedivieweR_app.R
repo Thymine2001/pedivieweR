@@ -1,4 +1,3 @@
-## add comment
 #' Create Pedigree Viewer Shiny Application
 #'
 #' This function creates and returns a Shiny application object for

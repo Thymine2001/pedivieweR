@@ -5,6 +5,7 @@ Version: 1.0.0
 Authors@R: person("Author", email = "author@example.com", role = c("aut", "cre"))
 Description: A Shiny application for viewing and analyzing pedigree data with interactive network visualization.
 License: GPL-3
+LicenseFile: LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
